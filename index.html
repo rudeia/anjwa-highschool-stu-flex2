@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026 자율적 교육과정 안내</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&family=Noto+Sans+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS Reset & Base */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #0f172a; 
+            font-family: 'Noto Sans KR', sans-serif; 
+            color: #f8fafc;
+            word-break: keep-all; 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* Mobile Container */
+        .mobile-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #020617;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Section Layout */
+        .section {
+            padding: 50px 24px;
+            border-bottom: 1px solid rgba(222, 255, 154, 0.15);
+            position: relative;
+        }
+        
+        /* Intro Section Special Styling */
+        .intro-section {
+            background:
+                radial-gradient(circle at 18% 18%, rgba(45, 212, 191, 0.26), transparent 28%),
+                radial-gradient(circle at 82% 16%, rgba(222, 255, 154, 0.22), transparent 26%),
+                linear-gradient(180deg, #0f172a 0%, #020617 100%);
+            text-align: center;
+            padding: 72px 24px 48px;
+        }
+        .intro-section h1 {
+            font-size: 38px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .intro-section h1 span { color: #deff9a; }
+        .intro-section .subtitle {
+            font-size: 18px;
+            color: #94a3b8;
+            font-weight: 300;
+        }
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 28px;
+        }
+        .fact-chip {
+            border: 1px solid rgba(222, 255, 154, 0.2);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.74);
+            padding: 12px 6px;
+        }
+        .fact-chip strong {
+            display: block;
+            color: #deff9a;
+            font-size: 18px;
+            line-height: 1.1;
+        }
+        .fact-chip span {
+            color: #cbd5e1;
+            font-size: 12px;
+        }
+
+        /* Typography */
+        h2.section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-left: 14px;
+            border-left: 6px solid #deff9a;
+            line-height: 1.3;
+        }
+        h2.section-title span { color: #deff9a; }
+
+        /* Information Box */
+        .info-box {
+            background: rgba(222, 255, 154, 0.05);
+            border: 1px solid rgba(222, 255, 154, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .badge-title {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #deff9a;
+            margin-bottom: 10px;
+            margin-top: 24px;
+        }
+        .badge-title:first-child { margin-top: 0; }
+        
+        .badge {
+            background: #deff9a;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-right: 8px;
+        }
+
+        p.desc {
+            font-size: 15px;
+            color: #daffde;
+            font-weight: 300;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Visual Cards */
+        .image-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            margin-top: 15px;
+            background-color: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+        .visual-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 22px;
+            isolation: isolate;
+        }
+        .visual-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(120deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 18px),
+                radial-gradient(circle at 78% 24%, rgba(255,255,255,0.26), transparent 22%);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .visual-card i {
+            align-self: flex-start;
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            font-size: 28px;
+            backdrop-filter: blur(8px);
+        }
+        .visual-copy {
+            text-align: left;
+        }
+        .visual-copy strong {
+            display: block;
+            font-size: 23px;
+            color: #fff;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+        .visual-copy span {
+            color: rgba(255,255,255,0.78);
+            font-size: 14px;
+        }
+        .visual-health { background: linear-gradient(135deg, #0f766e, #14b8a6 48%, #bef264); }
+        .visual-bridge { background: linear-gradient(135deg, #1d4ed8, #06b6d4 52%, #facc15); }
+        .visual-space { background: linear-gradient(135deg, #312e81, #7c3aed 46%, #38bdf8); }
+        .visual-food { background: linear-gradient(135deg, #15803d, #f59e0b 54%, #fef3c7); }
+        .visual-debate { background: linear-gradient(135deg, #7f1d1d, #f97316 50%, #fde68a); }
+        .visual-literature { background: linear-gradient(135deg, #0f172a, #db2777 54%, #fbcfe8); }
+        .visual-sports { background: linear-gradient(135deg, #064e3b, #22c55e 50%, #67e8f9); }
+        .visual-art { background: linear-gradient(135deg, #581c87, #e11d48 52%, #fde047); }
+        .visual-bio { background: linear-gradient(135deg, #164e63, #10b981 52%, #d9f99d); }
+        .visual-career { background: linear-gradient(135deg, #1e3a8a, #6366f1 50%, #f0abfc); }
+        .visual-study { background: linear-gradient(135deg, #334155, #0891b2 52%, #a7f3d0); }
+
+        .program-map {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 2px 0 10px;
+            margin-top: 26px;
+            scrollbar-width: none;
+        }
+        .program-map::-webkit-scrollbar { display: none; }
+        .map-pill {
+            flex: 0 0 auto;
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            border-radius: 999px;
+            color: #e2e8f0;
+            background: rgba(15, 23, 42, 0.82);
+            padding: 8px 12px;
+            font-size: 13px;
+            text-decoration: none;
+        }
+        .map-pill:active,
+        .map-pill:hover {
+            border-color: #deff9a;
+            color: #deff9a;
+        }
+
+        /* Bullet List (For Rules) */
+        .rule-list {
+            list-style: none;
+        }
+        .rule-list li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #daffde;
+            font-weight: 300;
+        }
+        .rule-list li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: #deff9a;
+            font-size: 18px;
+        }
+        .rule-list strong { color: #fff; font-weight: 700; }
+
+        /* Outro */
+        .outro-section {
+            text-align: center;
+            padding: 80px 24px;
+            background-color: #050505;
+        }
+        .outro-section h2 {
+            font-size: 40px;
+            color: #deff9a;
+            font-family: 'Urbanist', sans-serif;
+            margin-bottom: 15px;
+        }
+        .outro-section p { color: #94a3b8; font-size: 16px; margin-bottom: 40px; }
+        
+        .btn-contact {
+            display: inline-block;
+            border: 2px solid #deff9a;
+            color: #deff9a;
+            padding: 16px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            background: rgba(222, 255, 154, 0.05);
+        }
+
+        /* Floating Scroll indicator */
+        .scroll-down {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 40px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* 구글 폼 신청 버튼 스타일 추가 */
+        .btn-apply {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #bef264, #84cc16);
+            color: #000;
+            padding: 20px;
+            border-radius: 16px;
+            font-size: 20px;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(190, 242, 100, 0.3);
+            transition: transform 0.2s;
+        }
+        .btn-apply:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 380px) {
+            .section { padding-left: 18px; padding-right: 18px; }
+            .intro-section h1 { font-size: 32px; }
+            .quick-facts { grid-template-columns: 1fr; }
+            .image-wrapper { height: 200px; }
+            .visual-copy strong { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<main class="mobile-container">
+    
+    <!-- 타이틀 섹션 -->
+    <header class="section intro-section">
+        <h1>2026학년도 1학기<br><span>자율적 교육과정</span><br>모바일 안내</h1>
+        <p class="subtitle">나의 미래를 설계하는 자기주도적 성장의 로드맵</p>
+        <div class="quick-facts" aria-label="핵심 안내">
+            <div class="fact-chip"><strong>11</strong><span>선택 활동</span></div>
+            <div class="fact-chip"><strong>3+</strong><span>최소 인원</span></div>
+            <div class="fact-chip"><strong>1·2·3</strong><span>희망 선택</span></div>
+        </div>
+        <nav class="program-map" aria-label="프로그램 바로가기">
+            <a class="map-pill" href="#program-1">N-드림</a>
+            <a class="map-pill" href="#program-2">스마트 브릿지</a>
+            <a class="map-pill" href="#program-3">ASA</a>
+            <a class="map-pill" href="#program-4">식품 영양학</a>
+            <a class="map-pill" href="#program-5">외쳐! 고운갇</a>
+            <a class="map-pill" href="#program-6">문학과 경영</a>
+            <a class="map-pill" href="#program-7">체육 탐구</a>
+            <a class="map-pill" href="#program-8">사회 예술부</a>
+            <a class="map-pill" href="#program-9">생명과학</a>
+            <a class="map-pill" href="#program-10">진로 탐색</a>
+            <a class="map-pill" href="#program-11">자기주도 학습</a>
+        </nav>
+        <div class="scroll-down">
+            <i class="fa-solid fa-chevron-down"></i><br>아래로 스크롤하여 확인
+        </div>
+    </header>
+
+    <!-- 유의사항 섹션 -->
+    <section class="section">
+        <h2 class="section-title">운영 원칙 및<br><span>필독 유의사항</span></h2>
+        <ul class="rule-list">
+            <li><i class="fa-solid fa-users"></i> 모든 프로젝트는 <strong>최소 3인 이상</strong> 편성 시 운영되며, 인원 미달 시 폐강될 수 있습니다.</li>
+            <li><i class="fa-solid fa-chalkboard-user"></i> 희망 프로젝트를 선택하더라도 <strong>담당 교사가 배정되지 않을 경우</strong>, 해당 활동은 <strong>'자율 탐구 및 진로 탐색'</strong>으로 전환되어 진행될 수 있습니다.</li>
+            <li><i class="fa-solid fa-layer-group"></i> 1, 2, 3희망의 중복 선택은 시스템적으로 제한되니 <strong>지망별로 서로 다른 프로젝트</strong>를 선택해 주세요.</li>
+            <li><i class="fa-solid fa-clipboard-check"></i> 폐강 혹은 교사 미배정 시 <strong>차순위 지망</strong>으로 자동 배정되므로 하위 순위 선택에 신중을 기해주시기 바랍니다.</li>
+        </ul>
+    </section>
+
+    <!-- ① N-드림 -->
+    <section class="section" id="program-1">
+        <h2 class="section-title">① (가칭)<br><span>N-드림</span></h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">체력 수준 및 운동 강도에 따른 심박수와 혈압의 회복 속도를 심층 분석하고, 운동 후 신체 변화 메커니즘을 보건 진로와 연계하여 탐구합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">운동 전후의 활력징후(심박수, 혈압)를 정밀 측정하고 관찰하며, 수집된 데이터를 바탕으로 신체 회복력 통계 분석 보고서를 작성합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-health" role="img" aria-label="활력징후 관찰">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <div class="visual-copy"><strong>운동 후 회복 데이터</strong><span>심박수와 혈압 변화를 관찰하는 보건 탐구</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ② 스마트 브릿지 -->
+    <section class="section" id="program-2">
+        <h2 class="section-title">② (가칭)<br><span>스마트 브릿지</span> 프로젝트</h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">건축·토목·전기공학의 역학적 원리를 융합하여, 태양광 및 LED 신재생 에너지를 활용한 미래형 친환경 인프라 설계 이론을 연구합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">스마트 친환경 교량의 3D 모델링 및 상세 설계도를 작성하고, 하중 분산 실험을 거쳐 실제 구조물 메이커 실습을 진행합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-bridge" role="img" aria-label="건축 모델 교량">
+                <i class="fa-solid fa-bridge"></i>
+                <div class="visual-copy"><strong>친환경 스마트 교량</strong><span>에너지와 구조 설계를 결합한 메이커 프로젝트</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ③ ASA -->
+    <section class="section" id="program-3">
+        <h2 class="section-title">③ (가칭)<br><span>ASA</span> (Aerospace & Science)</h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">우주·항공 분야의 최신 과학기술과 인공위성 궤도학을 학습하며, 우주 환경에서 작동하는 센서 및 신소재의 공학적 원리를 심화 탐구합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc"><strong>이지메이커(Easy Maker)</strong>를 활용한 위성 데이터 수집 프로세스 코딩을 수행하고, 소형 인공위성체 프로토타입 제작 및 테스트를 진행합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-space" role="img" aria-label="위성 코딩 및 우주">
+                <i class="fa-solid fa-satellite"></i>
+                <div class="visual-copy"><strong>우주 항공 과학</strong><span>위성 데이터와 프로토타입 제작을 다루는 탐구</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ④ 식품 영양학 탐구 -->
+    <section class="section" id="program-4">
+        <h2 class="section-title">④ (가칭)<br><span>식품 영양학</span> 탐구</h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">제과·제빵 및 조리 과정에 숨겨진 영양학적 원리와 식품의 화학적 변화를 분석하며, 시대별 식문화의 변천사를 심도 있게 탐색합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">영양학적 데이터를 기반으로 연령별 균형 식단을 직접 구성해 보고, 과학적 조리 원리를 검증하는 심화 조리 실습을 수행합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-food" role="img" aria-label="조리 실습 및 식품">
+                <i class="fa-solid fa-bowl-food"></i>
+                <div class="visual-copy"><strong>식품과 영양의 과학</strong><span>균형 식단과 조리 원리를 직접 검증하는 실습</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑤ 외쳐! 고운갇 -->
+    <section class="section" id="program-5">
+        <h2 class="section-title">⑤ (가칭)<br><span>외쳐! 고운갇</span></h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">2022 개정 교육과정의 핵심 방향성을 분석하고, 기존 교육과정과의 심층 비교를 통해 교육 정책이 사회에 미치는 영향을 연구합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">교육 현안 쟁점에 대한 찬반 토론 대항전을 전개하며, 실제 법정 형식을 차용한 교육 정책 모의재판 및 개선 제안서를 도출합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-debate" role="img" aria-label="토론 및 모의재판">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <div class="visual-copy"><strong>교육정책 토론 실험실</strong><span>쟁점 분석과 모의재판으로 제안서를 만드는 활동</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑥ 문학과 경영 -->
+    <section class="section" id="program-6">
+        <h2 class="section-title">⑥ (가칭)<br><span>문학과 경영</span></h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">창작 문학의 비즈니스 모델링을 분석하고, 현대 출판 트렌드 연구와 타겟 독자층을 대상으로 한 도서 마케팅 전략을 수립합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">팀원 간 공동 세계관을 공유하는 릴레이 소설을 창작하며, 북 커버 브랜딩 디자인 및 시장 수요조사 기획 실무를 경험합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-literature" role="img" aria-label="도서 마케팅 및 창작">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <div class="visual-copy"><strong>이야기를 브랜드로</strong><span>공동 창작과 출판 마케팅을 연결하는 프로젝트</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑦ 몸과 머리도 안좋은 팀 -->
+    <section class="section" id="program-7">
+        <h2 class="section-title">⑦ (가칭)<br><span>몸과 머리도</span> 안좋은 팀</h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">체대 입시 주요 종목의 기능 분석과 운동생리학 이론을 습득하고, 신체 움직임 효율을 극대화하는 생체역학 메커니즘을 탐구합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">웨어러블 장비를 활용해 운동 중 생체 데이터를 실시간으로 측정하고, 과학적 근거에 기반한 개인별 맞춤형 훈련 프로그램을 설계합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-sports" role="img" aria-label="운동 생체 역학">
+                <i class="fa-solid fa-person-running"></i>
+                <div class="visual-copy"><strong>움직임을 데이터로</strong><span>운동 기능과 생체역학을 분석하는 체육 탐구</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑧ 사회 예술부 -->
+    <section class="section" id="program-8">
+        <h2 class="section-title">⑧ (가칭)<br><span>사회 예술부</span></h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">예술 작품과 시대적 배경의 관계를 분석하며, 시각 예술이 사회 비판 및 변화에 미치는 역할과 현대적 상관관계를 심층 연구합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">사회 참여적 예술가의 사례 연구 보고서를 작성하고, 사회적 메시지를 담은 큐레이팅 기획 및 융합 예술 비평 토론을 수행합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-art" role="img" aria-label="예술 작품 전시 및 비평">
+                <i class="fa-solid fa-palette"></i>
+                <div class="visual-copy"><strong>사회와 예술의 연결</strong><span>작품 분석, 큐레이팅, 비평을 함께 경험</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑨ 생명과학 탐구 -->
+    <section class="section" id="program-9">
+        <h2 class="section-title">⑨ (가칭)<br><span>생명과학</span> 탐구</h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">유전자 가위(CRISPR), 줄기세포 공학 등 현대 생명공학의 최신 트렌드를 분석하고, 기술 발전에 따른 생명윤리학적 쟁점을 심층 연구합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">주제별 학술지 논문 리서치를 수행하며, 과학적 논거와 윤리적 비평을 종합하여 미래 생명과학 기술 탐구 보고서를 작성합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-bio" role="img" aria-label="DNA 및 생명과학 연구">
+                <i class="fa-solid fa-dna"></i>
+                <div class="visual-copy"><strong>미래 생명과학 읽기</strong><span>최신 기술과 생명윤리 쟁점을 함께 탐색</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑩ 자율 탐구 및 진로 탐색 -->
+    <section class="section" id="program-10">
+        <h2 class="section-title">⑩ <span>자율 탐구 및<br>진로 탐색</span></h2>
+        <div class="info-box">
+            <div class="badge-title"><span class="badge">Inquiry</span> 탐구 내용</div>
+            <p class="desc">개인별 전공 심화 주제를 직접 선정하여 맞춤형 진로 로드맵을 설계하고, 관심 전공 분야의 선행 학술 자료를 자율적으로 분석합니다.</p>
+            
+            <div class="badge-title"><span class="badge">Practice</span> 실제 활동</div>
+            <p class="desc">학술 논문 심층 리뷰 및 전공 탐색 활동을 진행하며, 자신의 진로 역량을 직관적으로 증명하는 종합 포트폴리오 결과물을 제작합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-career" role="img" aria-label="개인 진로 로드맵">
+                <i class="fa-solid fa-route"></i>
+                <div class="visual-copy"><strong>나만의 진로 로드맵</strong><span>전공 심화 주제와 포트폴리오를 설계</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑪ 자기주도적 학습 진행 -->
+    <section class="section" id="program-11">
+        <h2 class="section-title">⑪ <span>자기주도적</span><br>학습 진행</h2>
+        <div class="info-box" style="border: 1px dashed #deff9a;">
+            <div class="badge-title"><span class="badge" style="background:#fff;">Focus</span> 학습 내용</div>
+            <p class="desc">내신 교과목 심화 보충, 수능 대비 등 개인의 학업 로드맵에 맞춘 자유 학습 계획을 수립합니다.</p>
+            
+            <div class="badge-title"><span class="badge" style="background:#fff;">Action</span> 실제 활동</div>
+            <p class="desc">자율적 교육과정 차시 동안 정숙한 환경에서 본인이 주도적으로 수립한 주간 및 차시별 학습 계획서를 완전하게 이행합니다.</p>
+        </div>
+        <div class="image-wrapper">
+            <div class="visual-card visual-study" role="img" aria-label="도서관 자기주도 학습">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <div class="visual-copy"><strong>자기주도 학습 루틴</strong><span>개인 계획을 세우고 차시별로 실천하는 선택지</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 (종료) -->
+    <footer class="section outro-section">
+        <h2>Your Choice,<br>Your Future!</h2>
+        <p>충분히 읽어보셨나요?<br>이제 아래 버튼을 눌러 투표를 완료해 주세요.</p>
+        
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScjPV0V1svVQo6nr0fBBTf_dLVfLVuXAKNeDLXj5lZHaU8zaQ/viewform?usp=dialog" target="_blank" class="btn-apply">
+            <i class="fa-solid fa-pen-to-square"></i> 구글 폼으로 신청하기
+        </a>
+    </footer>
+
+</main>
+
+</body>
+</html>
